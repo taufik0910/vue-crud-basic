@@ -18,7 +18,7 @@
         },
 
         created: function () {
-        let uri ='http://localhost:8000/posts/'+this.$route.params.id+'/edit';
+        let uri ='http://localhost:8000/posts/'+this.$route.params.id+'/post-delete';
         Axios.get(uri).then((response)=>{
             this.post = response.data;
         });          
