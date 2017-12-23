@@ -2,14 +2,12 @@
     <div>
         <h3>Delete Post {{post.title}} </h3>
     <form v-on:submit.prevent="deletePost">
+        <p> the action cannot be undo</p>
         <button type="submit" class="btn btn-sx btn-danger" name="button"> Delete</button>
-        <router-link class="btn btn-sx btn-primary" v-bind:to="'/'">Back</router-link>
-
-        
+        <router-link class="btn btn-sx btn-primary" v-bind:to="'/'">Back</router-link>   
     </form>        
     </div>
-    
-</template>
+    </template>
 
 <script>
     export default{
@@ -18,7 +16,7 @@
         },
 
         created: function () {
-        let uri ='http://localhost:8000/posts/'+this.$route.params.id+'/post-delete';
+        let uri ='http://localhost:8000/posts/'+this.$route.params.id;
         Axios.get(uri).then((response)=>{
             this.post = response.data;
         });          
@@ -27,7 +25,7 @@
         methods:{
             deletePost: function(){
                 let uri ='http://localhost:8000/posts/'+this.$route.params.id;
-                Axios.patch(uri, this.post).then((Response)=>{
+                Axios.delete(uri, this.post).then((Response)=>{
                     this.$router.push({name:'Listposts'})
                 })
             }

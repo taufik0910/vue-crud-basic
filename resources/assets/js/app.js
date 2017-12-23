@@ -56,5 +56,6 @@ new Vue(
     Vue.util.extend(
         {router},
         AppLayout
+        
     )
 ).$mount('#app');
